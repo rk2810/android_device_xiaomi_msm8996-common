@@ -371,4 +371,7 @@
     <!-- Bool for key backlight -->
     <bool name="config_button_brightness_support">true</bool>
     
+    <!-- Does the battery LED support multiple colors. Used to decide if the user can change the colors -->
+    <bool name="config_multiColorBatteryLed">true</bool>
+    
 </resources>
