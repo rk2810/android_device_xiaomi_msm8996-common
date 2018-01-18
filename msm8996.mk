@@ -160,6 +160,12 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     ueventd.qcom.rc
 
+# Darkness
+PRODUCT_PACKAGES += \
+    init.darkness.rc \
+    init.spectrum.rc \
+    init.spectrum.sh
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
