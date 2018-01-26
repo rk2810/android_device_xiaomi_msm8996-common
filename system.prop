@@ -120,7 +120,9 @@ persist.nfc.smartcard.config=SIM1,SIM2,eSE1
 # Perf
 ro.am.reschedule_service=true
 ro.min_freq_0=307200
-ro.min_freq_4=307200
+ro.min_freq_2=307200
+ro.vendor.qti.core_ctl_min_cpu=2
+ro.vendor.qti.core_ctl_max_cpu=4
 ro.sys.fw.bg_apps_limit=60
 ro.vendor.extension_library=libqti-perfd-client.so
 
