@@ -212,3 +212,6 @@ debug.generate-debug-info=false
 
 # Use FIFO UI Scheduling
 sys.use_fifo_ui=1
+
+# Disable logdump
+ro.logdumpd.enabled=0
