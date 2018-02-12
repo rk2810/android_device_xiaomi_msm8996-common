@@ -2,7 +2,7 @@
 #
 # Device            : Xiaomi Mi 5 (gemini)
 # ROM Maintainer    : rk2810 <rohan.kumquat@gmail.com>
-# Kernel Maintainer : MOVZX <MOVZX@Telegram.org>
+# Kernel Maintainer : MOVZX <movzx@yahoo.com>
 #
 
 # SPECTRUM KERNEL MANAGER
@@ -34,7 +34,6 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
             # Darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
@@ -52,7 +51,6 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/fast_ramp_down 1
             # Darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
@@ -63,13 +61,31 @@ on property:persist.spectrum.profile=0
             # Set Default CPU Governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     #
+    # CPU Core Control
+        # Little
+            write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred "1 0"
+            write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+            write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 5
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 3
+            write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 1000
+            write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 0
+        # Big
+            write /sys/devices/system/cpu/cpu2/core_ctl/not_preferred "0 0"
+            write /sys/devices/system/cpu/cpu2/core_ctl/min_cpus 0
+            write /sys/devices/system/cpu/cpu2/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_up_thres 5
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_down_thres 3
+            write /sys/devices/system/cpu/cpu2/core_ctl/offline_delay_ms 500
+            write /sys/devices/system/cpu/cpu2/core_ctl/is_big_cluster 1
+    #
     # CPU Scheduler
         chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 0
     #
     # CPU Input Boost
         chmod 755 /sys/module/msm_performance/parameters/touchboost
-        write /sys/module/msm_performance/parameters/touchboost 0
+        write /sys/module/msm_performance/parameters/touchboost 1
     #
     # Set OnePlus OPChain
         write /sys/module/opchain/parameters/chain_on 1
@@ -77,8 +93,8 @@ on property:persist.spectrum.profile=0
     #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
-        write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
+        write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 510000000
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     #
     # Set Arch Specific Power Settings
@@ -108,7 +124,6 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 75
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 34000
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 0
             # Darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
@@ -126,7 +141,6 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "10 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 80
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 34000
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/fast_ramp_down 0
             # Darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "10 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
@@ -136,6 +150,24 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 0
             # Set Default CPU Governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    #
+    # CPU Core Control
+        # Little
+            write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred "1 0"
+            write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+            write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 5
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 3
+            write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 1500
+            write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 0
+        # Big
+            write /sys/devices/system/cpu/cpu2/core_ctl/not_preferred "0 0"
+            write /sys/devices/system/cpu/cpu2/core_ctl/min_cpus 0
+            write /sys/devices/system/cpu/cpu2/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_up_thres 5
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_down_thres 3
+            write /sys/devices/system/cpu/cpu2/core_ctl/offline_delay_ms 1000
+            write /sys/devices/system/cpu/cpu2/core_ctl/is_big_cluster 1
     #
     # CPU Scheduler
         chmod 755 /proc/sys/kernel/sched_boost
@@ -151,8 +183,8 @@ on property:persist.spectrum.profile=1
     #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
-        write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 2
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 214000000
+        write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 510000000
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     #
     # Set Arch Specific Power Settings
@@ -183,6 +215,24 @@ on property:persist.spectrum.profile=2
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
     #
+    # CPU Core Control
+        # Little
+            write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred "1 0"
+            write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+            write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 10
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 5
+            write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 500
+            write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 0
+        # Big
+            write /sys/devices/system/cpu/cpu2/core_ctl/not_preferred "0 0"
+            write /sys/devices/system/cpu/cpu2/core_ctl/min_cpus 0
+            write /sys/devices/system/cpu/cpu2/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_up_thres 15
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_down_thres 10
+            write /sys/devices/system/cpu/cpu2/core_ctl/offline_delay_ms 250
+            write /sys/devices/system/cpu/cpu2/core_ctl/is_big_cluster 1
+    #
     # CPU Scheduler
         chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 0
@@ -197,9 +247,8 @@ on property:persist.spectrum.profile=2
     #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
-        write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
-        write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 510000000
+        write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 401800000
     #
     # Set Arch Specific Power Settings
         write /sys/kernel/sched/arch_power 1
@@ -228,7 +277,6 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "1 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 70
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 55000
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 0
             # Darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "1 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
@@ -246,7 +294,6 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "1 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 75
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 55000
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/fast_ramp_down 0
             # Darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "1 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
@@ -256,6 +303,24 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 0
             # Set Default CPU Governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    #
+    # CPU Core Control
+        # Little
+            write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred "1 0"
+            write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
+            write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 5
+            write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 3
+            write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 2000
+            write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 0
+        # Big
+            write /sys/devices/system/cpu/cpu2/core_ctl/not_preferred "0 0"
+            write /sys/devices/system/cpu/cpu2/core_ctl/min_cpus 0
+            write /sys/devices/system/cpu/cpu2/core_ctl/max_cpus 2
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_up_thres 5
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_down_thres 3
+            write /sys/devices/system/cpu/cpu2/core_ctl/offline_delay_ms 1500
+            write /sys/devices/system/cpu/cpu2/core_ctl/is_big_cluster 1
     #
     # CPU Scheduler
         chmod 755 /proc/sys/kernel/sched_boost
@@ -271,8 +336,8 @@ on property:persist.spectrum.profile=3
     #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
-        write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 3
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 315000000
+        write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 510000000
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     #
     # Set Arch Specific Power Settings
