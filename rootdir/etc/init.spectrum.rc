@@ -29,37 +29,17 @@ on property:persist.spectrum.profile=0
         # Little
             write /sys/devices/system/cpu/cpu0/online 1
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
-            # Interactive
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
-            # Darkness
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_hispeed_load 80
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/min_sample_time 21000
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/fastlane 0
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/powersave_bias 1
-            # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
-            # Interactive
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
-            # Darkness
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_hispeed_load 85
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/min_sample_time 21000
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/fastlane 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 1
-            # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "15 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
     #
     # CPU Core Control
         # Little
@@ -119,37 +99,17 @@ on property:persist.spectrum.profile=1
         # Little
             write /sys/devices/system/cpu/cpu0/online 1
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
-            # Interactive
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 75
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 34000
-            # Darkness
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_hispeed_load 75
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/min_sample_time 34000
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/fastlane 1
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/powersave_bias 0
-            # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 75
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 34000
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
-            # Interactive
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "10 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 80
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 34000
-            # Darkness
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "10 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_hispeed_load 80
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/min_sample_time 34000
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/fastlane 1
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 0
-            # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "10 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 80
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 34000
     #
     # CPU Core Control
         # Little
@@ -272,37 +232,17 @@ on property:persist.spectrum.profile=3
         # Little
             write /sys/devices/system/cpu/cpu0/online 1
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
-            # Interactive
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "1 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 70
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 55000
-            # Darkness
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "1 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_hispeed_load 70
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/min_sample_time 55000
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/fastlane 1
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/powersave_bias 0
-            # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "1 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 70
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 55000
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
-            # Interactive
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "1 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 75
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 55000
-            # Darkness
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "1 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_hispeed_load 75
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/min_sample_time 55000
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/fastlane 1
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 0
-            # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "1 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 75
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 55000
     #
     # CPU Core Control
         # Little
