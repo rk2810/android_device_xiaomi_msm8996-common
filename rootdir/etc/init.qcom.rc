@@ -25,9 +25,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.darkness.rc
-import init.spectrum.rc
 import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.darkness.rc
+import /vendor/etc/init/hw/init.spectrum.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 

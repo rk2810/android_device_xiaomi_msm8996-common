@@ -13,6 +13,9 @@ on darkness
         write /sys/devices/system/cpu/cpu3/online 1
     #
     # Set CPU Parameters
+        # Disable thermal hotplug to switch governor
+            write /sys/module/msm_thermal/core_control/enabled 0
+        #
         # Little
             write /sys/devices/system/cpu/cpu0/online 1
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
@@ -26,7 +29,6 @@ on darkness
             write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 50000
             write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
             write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
             write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 1
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
@@ -41,28 +43,14 @@ on darkness
             write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 50000
             write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
             write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 1
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
             write /sys/devices/system/cpu/cpu2/cpufreq/interactive/align_windows 1
-    #
-    # CPU Core Control
-        # Little
-            write /sys/devices/system/cpu/cpu0/core_ctl/disable 1
-            write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred "1 0"
-            write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 1
-            write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 2
-            write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 5
-            write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 3
-            write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 1000
-            write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 0
-        # Big
-            write /sys/devices/system/cpu/cpu2/core_ctl/disable 1
-            write /sys/devices/system/cpu/cpu2/core_ctl/not_preferred "0 0"
-            write /sys/devices/system/cpu/cpu2/core_ctl/min_cpus 0
-            write /sys/devices/system/cpu/cpu2/core_ctl/max_cpus 2
-            write /sys/devices/system/cpu/cpu2/core_ctl/busy_up_thres 5
-            write /sys/devices/system/cpu/cpu2/core_ctl/busy_down_thres 3
-            write /sys/devices/system/cpu/cpu2/core_ctl/offline_delay_ms 500
-            write /sys/devices/system/cpu/cpu2/core_ctl/is_big_cluster 1
+        #
+        # Lock CPU Scheduler Settings
+            # write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
+            # write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
+        #
+        # Re-enable thermal hotplug
+            write /sys/module/msm_thermal/core_control/enabled 1
     #
     # CPU Scheduler
         write /proc/sys/kernel/sched_boost 0
@@ -80,7 +68,7 @@ on darkness
         write /sys/class/devfreq/soc:qcom,memlat-cpu2/polling_interval 10
     #
     # CPU Input Boost
-        write /sys/module/msm_performance/parameters/touchboost 1
+        write /sys/module/msm_performance/parameters/touchboost 0
         write /sys/module/cpu_boost/parameters/input_boost_ms 50
         write /sys/module/cpu_boost/parameters/sched_boost_on_input N
         write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 1:1324800 2:1996800 3:1996800"
@@ -191,6 +179,7 @@ on darkness
     # Misc Tweaks
         write /sys/module/workqueue/parameters/power_efficient Y
         write /sys/module/sync/parameters/fsync_enabled Y
+        write /sys/kernel/fast_charge/force_fast_charge 1
         write /sys/module/qpnp_smbcharger/parameters/fast_charge_max_ma 2400
         write /sys/module/qpnp_smbcharger/parameters/default_fastchg_current_ma 2400
         write /sys/module/qpnp_smbcharger/parameters/default_dcp_icl_ma 2400
