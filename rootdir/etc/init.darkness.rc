@@ -1,8 +1,6 @@
-# Darkness Kernel for Atomic-HMP
 #
-# Device            : Xiaomi Mi 5 (gemini)
-# ROM Maintainer    : rk2810 <rohan.kumquat@gmail.com>
-# Kernel Maintainer : MOVZX <movzx@yahoo.com>
+# Device        : Xiaomi Mi 5 (gemini)
+# Maintainer    : MOVZX (MOVZX@Telegram.org)
 #
 
 on darkness
@@ -16,182 +14,157 @@ on darkness
         # Disable thermal hotplug to switch governor
             write /sys/module/msm_thermal/core_control/enabled 0
         #
+        # Unlock Interactive CPU Governor
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 0
+        #
         # Little
             write /sys/devices/system/cpu/cpu0/online 1
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 13000
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 1324800
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 20000
             write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 80000
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 50000
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 960000
             write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 1
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 10000
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 10000
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 10000
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack 10000
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "15 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "13000 1324800:13000 1632000:21000"
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 1996800
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "20000 1324800:30000 1632000:50000"
             write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 20000
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack 80000
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 50000
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 1248000
             write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 1
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/align_windows 1
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 10000
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 10000
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "15 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 10000
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack 10000
         #
-        # Lock CPU Scheduler Settings
-            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
-            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 0
+        # Lock Interactive CPU Governor
+            write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
+            write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
         #
         # Re-enable thermal hotplug
             write /sys/module/msm_thermal/core_control/enabled 1
     #
     # CPU Scheduler
         write /proc/sys/kernel/sched_boost 0
-        write /proc/sys/kernel/sched_upmigrate 85
-        write /proc/sys/kernel/sched_downmigrate 80
-        write /proc/sys/kernel/sched_freq_inc_notify 400000
-        write /proc/sys/kernel/sched_freq_dec_notify 400000
-        write /proc/sys/kernel/sched_spill_nr_run 3
-        write /proc/sys/kernel/sched_init_task_load 100
-        write /proc/sys/kernel/sched_wake_to_idle 0
-        write /sys/class/devfreq/soc:qcom,mincpubw/governor cpufreq
-    #
-    # Set MemLat
-        write /sys/class/devfreq/soc:qcom,memlat-cpu0/polling_interval 10
-        write /sys/class/devfreq/soc:qcom,memlat-cpu2/polling_interval 10
     #
     # CPU Input Boost
         write /sys/module/msm_performance/parameters/touchboost 0
+        write /sys/module/cpu_boost/parameters/input_boost_enabled 1
+        write /sys/module/cpu_boost/parameters/input_boost_freq "0:960000 1:960000 2:1248000 3:1248000"
         write /sys/module/cpu_boost/parameters/input_boost_ms 50
         write /sys/module/cpu_boost/parameters/sched_boost_on_input N
-        write /sys/module/cpu_boost/parameters/input_boost_freq "0:1324800 1:1324800 2:1996800 3:1996800"
-        write /sys/module/cpu_boost/parameters/input_boost_enabled 1
-        write /sys/kernel/cpu_input_boost/ib_freqs "0:1324800 1:1324800 2:1996800 3:1996800"
-        write /sys/kernel/cpu_input_boost/ib_duration_ms 50
-        write /sys/kernel/cpu_input_boost/enabled 1
     #
     # Set OnePlus OPChain
-        write /sys/module/opchain/parameters/chain_on 1
         write /sys/module/opchain/parameters/boost 1
-        write /sys/module/opchain/parameters/boost_tl 1
-        write /sys/module/opchain/parameters/boost_sample_time 21000
-    #
-    # Set OnePlus Memory Defrag
-        write /sys/module/defrag_helper/parameters/disable 0
+        write /sys/module/opchain/parameters/boost_sample_time 10000
+        write /sys/module/opchain/parameters/boost_tl 10
+        write /sys/module/opchain/parameters/chain_on 1
     #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
         write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 0
-        write /sys/class/kgsl/kgsl-3d0/devfreq/min_clock_mhz 133
-        write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
-        write /sys/class/kgsl/kgsl-3d0/devfreq/max_clock_mhz 510
-        write /sys/class/kgsl/kgsl-3d0/devfreq/max_clock_mhz 624
-        write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 510000000
+        write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 1
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
+        write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
     #
     # Set LMK
-        write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
         write /sys/module/lowmemorykiller/parameters/debug_level 0
-        write /sys/module/lowmemorykiller/parameters/adj_max_shift 354
-        write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+        write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 0
+        write /sys/module/lowmemorykiller/parameters/minfree "21816,29088,36360,43632,50904,65448"
     #
     # Set Process Reclaim
         write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
         write /sys/module/process_reclaim/parameters/min_score_adj 12
-        write /sys/module/process_reclaim/parameters/pressure_min 10
-        write /sys/module/process_reclaim/parameters/pressure_max 70
         write /sys/module/process_reclaim/parameters/per_swap_size 1024
+        write /sys/module/process_reclaim/parameters/pressure_max 70
+        write /sys/module/process_reclaim/parameters/pressure_min 10
         write /sys/module/process_reclaim/parameters/swap_opt_eff 30
     #
     # VM Tweaks
+        write /proc/sys/vm/dirty_background_ratio 70
+        write /proc/sys/vm/dirty_ratio 90
+        write /proc/sys/vm/extra_free_kbytes 24300
         write /proc/sys/vm/laptop_mode 1
-        write /proc/sys/vm/swappiness 60
-        write /proc/sys/vm/vfs_cache_pressure 100
-        write /proc/sys/vm/vm_dirty_ratio 50
-        write /proc/sys/vm/dirty_background_ratio 20
+        write /proc/sys/vm/min_free_kbytes 4096
+        write /proc/sys/vm/oom_kill_allocating_task 0
+        write /proc/sys/vm/overcommit_ratio 80
+        write /proc/sys/vm/swappiness 30
+        write /proc/sys/vm/vfs_cache_pressure 400
         write /sys/module/vmpressure/parameters/allocstall_threshold 80
     #
-    # ZRAM Tweaks
-        write /sys/block/zram0/disksize 536870912
-        mkswap /dev/block/zram0
-        swapon /dev/block/zram0 -p 32758
-    #
     # Set Arch Specific Power Settings
-        write /sys/kernel/sched/arch_power 1
         write /sys/kernel/sched/arch_capacity 1
+        write /sys/kernel/sched/arch_power 1
     #
     # Set Gentle Fair Sleepers Settings
         write /sys/kernel/sched/gentle_fair_sleepers 0
     #
     # Sound Control
         # ElementalX Sound Control
-            chmod 755 /sys/kernel/sound_control/earpiece_gain
             write /sys/kernel/sound_control/earpiece_gain 8
-            chmod 755 /sys/kernel/sound_control/mic_gain
             write /sys/kernel/sound_control/mic_gain 5
-            chmod 755 /sys/kernel/sound_control/speaker_gain
-            write /sys/kernel/sound_control/speaker_gain 0
+            write /sys/kernel/sound_control/speaker_gain 13
         # Franco
-            chmod 755 /sys/devices/virtual/misc/soundcontrol/earpiece_boost
             write /sys/devices/virtual/misc/soundcontrol/earpiece_boost 8
-            chmod 755 /sys/devices/virtual/misc/soundcontrol/mic_boost
             write /sys/devices/virtual/misc/soundcontrol/mic_boost 5
-            chmod 755 /sys/devices/virtual/misc/soundcontrol/speaker_boost
-            write /sys/devices/virtual/misc/soundcontrol/speaker_boost 0
-    #
-    # KSM/UKSM Tweaks
-        write /sys/kernel/mm/uksm/run_charging 1
-        write /sys/kernel/mm/uksm/max_cpu_percentage 10
-        write /sys/kernel/mm/uksm/sleep_millisecs 3000
+            write /sys/devices/virtual/misc/soundcontrol/speaker_boost 13
     #
     # Set I/O Scheduler
         setprop sys.io.scheduler bfq
-        # MMCBLK0
-        write /sys/block/sda/queue/scheduler bfq
-        write /sys/block/sda/queue/read_ahead_kb 512
+        # SDA
         write /sys/block/sda/queue/iostats 0
-        # MMCBLK1
-        write /sys/block/sde/queue/scheduler bfq
-        write /sys/block/sde/queue/read_ahead_kb 512
+        write /sys/block/sda/queue/read_ahead_kb 1024
+        write /sys/block/sda/queue/scheduler "bfq"
+        # SDE
         write /sys/block/sde/queue/iostats 0
+        write /sys/block/sde/queue/read_ahead_kb 1024
+        write /sys/block/sde/queue/scheduler "bfq"
         # DM-0
-        write /sys/block/dm-0/queue/scheduler bfq
-        write /sys/block/dm-0/queue/read_ahead_kb 512
         write /sys/block/dm-0/queue/iostats 0
-        # DM-1
-        write /sys/block/dm-1/queue/scheduler bfq
-        write /sys/block/dm-1/queue/read_ahead_kb 512
-        write /sys/block/dm-1/queue/iostats 0
+        write /sys/block/dm-0/queue/read_ahead_kb 1024
+        write /sys/block/dm-0/queue/scheduler "bfq"
     #
     # UFS Tweaks
         write /sys/module/scsi_mod/parameters/use_blk_mq Y
-        write /sys/devices/soc/624000.ufshc/clkscale_enable 1
         write /sys/devices/soc/624000.ufshc/clkgate_enable 1
+        write /sys/devices/soc/624000.ufshc/clkscale_enable 1
         write /sys/devices/soc/624000.ufshc/624000.ufshc:ufs_variant/pm_qos_enable 1
     #
     # Misc Tweaks
         write /sys/module/workqueue/parameters/power_efficient Y
-        write /sys/module/sync/parameters/fsync_enabled Y
+        write /sys/kernel/dyn_fsync/Dyn_fsync_active 1
         write /sys/kernel/fast_charge/force_fast_charge 1
         write /sys/module/qpnp_smbcharger/parameters/fast_charge_max_ma 2400
-        write /sys/module/qpnp_smbcharger/parameters/default_fastchg_current_ma 2400
         write /sys/module/qpnp_smbcharger/parameters/default_dcp_icl_ma 2400
+        write /sys/module/qpnp_smbcharger/parameters/default_fastchg_current_ma 2400
         write /sys/module/qpnp_smbcharger/parameters/default_hvdcp_icl_ma 2400
         write /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma 2400
         write /sys/module/battery_current_limit/parameters/low_battery_value 5
         write /sys/module/msm_thermal/vdd_restriction/enabled 0
-        write /sys/module/msm_thermal/parameters/enabled Y
+        # write /sys/module/msm_thermal/parameters/enabled N
+        write /sys/module/state_notifier/parameters/enabled Y
         write /sys/kernel/fp_boost/enabled 1
+        write /sys/kernel/mm/uksm/run_charging 1
     #
     # Set Hostname
         setprop net.hostname Darkness
+        setprop ro.config.fha_enable true
+        setprop ro.sys.fw.bg_apps_limit 34
+        setprop ro.config.dha_cached_max 16
+        setprop ro.config.dha_empty_max 42
+        setprop ro.config.dha_empty_init 32
+        setprop ro.config.dha_lmk_scale 0.545
+        setprop ro.config.dha_th_rate 2.3
+        setprop ro.config.sdha_apps_bg_max 64
+        setprop ro.config.sdha_apps_bg_min 8
 
 on property:dev.bootcomplete=1
     trigger darkness
