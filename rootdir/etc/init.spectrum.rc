@@ -90,6 +90,12 @@ on property:persist.spectrum.profile=0
         chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input N
     #
+    # Set OnePlus OPChain
+        write /sys/module/opchain/parameters/boost 1
+        write /sys/module/opchain/parameters/boost_sample_time 10000
+        write /sys/module/opchain/parameters/boost_tl 10
+        write /sys/module/opchain/parameters/chain_on 1
+    #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
         write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 0
@@ -181,6 +187,12 @@ on property:persist.spectrum.profile=1
         chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input Y
     #
+    # Set OnePlus OPChain
+        write /sys/module/opchain/parameters/boost 1
+        write /sys/module/opchain/parameters/boost_sample_time 30000
+        write /sys/module/opchain/parameters/boost_tl 1
+        write /sys/module/opchain/parameters/chain_on 1
+    #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
         write /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost 2
@@ -227,6 +239,12 @@ on property:persist.spectrum.profile=2
         write /sys/module/msm_performance/parameters/touchboost 0
         chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input N
+    #
+    # Set OnePlus OPChain
+        write /sys/module/opchain/parameters/boost 0
+        write /sys/module/opchain/parameters/boost_sample_time 0
+        write /sys/module/opchain/parameters/boost_tl 0
+        write /sys/module/opchain/parameters/chain_on 0
     #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
@@ -318,6 +336,12 @@ on property:persist.spectrum.profile=3
         write /sys/module/msm_performance/parameters/touchboost 1
         chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input Y
+    #
+    # Set OnePlus OPChain
+        write /sys/module/opchain/parameters/boost 1
+        write /sys/module/opchain/parameters/boost_sample_time 50000
+        write /sys/module/opchain/parameters/boost_tl 1
+        write /sys/module/opchain/parameters/chain_on 1
     #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4

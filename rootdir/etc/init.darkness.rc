@@ -128,6 +128,12 @@ on darkness
         write /sys/module/cpu_boost/parameters/input_boost_ms 50
         write /sys/module/cpu_boost/parameters/sched_boost_on_input N
     #
+    # Set OnePlus OPChain
+        write /sys/module/opchain/parameters/boost 1
+        write /sys/module/opchain/parameters/boost_sample_time 10000
+        write /sys/module/opchain/parameters/boost_tl 10
+        write /sys/module/opchain/parameters/chain_on 1
+    #
     # Set Adreno GPU
         write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
         write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 0
@@ -208,93 +214,93 @@ on darkness
         setprop ro.config.dha_th_rate 2.3
         setprop ro.config.sdha_apps_bg_max 64
         setprop ro.config.sdha_apps_bg_min 8
-        persist.camera.HAL3.enabled 1
-        Camera.no_navigation_bar true
-        persist.ts.postmakeup false
-        persist.ts.rtmakeup false
-        ro.qualcomm.cabl 0
-        ro.qcom.ad 1
-        ro.qcom.ad.calib.data /system/etc/calib.cfg
-        ro.qcom.ad.sensortype 2
-        ro.sys.display.support 63
-        vendor.display.enable_default_color_mode 1
-        debug.sf.enable_hwc_vds 1
-        debug.egl.hw 1
-        debug.gralloc.enable_fb_ubwc 1
-        debug.sf.hw 1
-        debug.sf.latch_unsignaled 1
-        dev.pm.dyn_samplingrate 1
-        persist.demo.hdmirotationlock false
-        persist.hwc.enable_vds 1
-        persist.debug.wfd.enable 1
-        persist.sys.wfd.virtual 0
-        ro.opengles.version 196610
-        ro.sf.lcd_density 480
-        sdm.debug.disable_rotator_split 1
-        sdm.debug.disable_skip_validate 1
-        sdm.perf_hint_window 50
-        persist.metadata_dynfps.disable true
-        persist.debug.sf.statistics 0
-        debug.sf.recomputecrop 0
-        persist.sys.pd_enable 0
-        media.stagefright.enable-player true
-        media.stagefright.enable-http true
-        media.stagefright.enable-aac true
-        media.stagefright.enable-qcp true
-        media.stagefright.enable-fma2dp true
-        media.stagefright.enable-scan true
-        media.stagefright.audio.sink 280
-        media.msm8996hw 1
-        mm.enable.smoothstreaming true
-        mm.enable.sec.smoothstreaming true
-        mmp.enable.3g2 true
-        media.aac_51_output_enabled true
-        av.debug.disable.pers.cache true
-        mm.enable.qcom_parser 1048575
-        persist.mm.enable.prefetch true
-        vendor.vidc.enc.disable.pq true
-        vidc.enc.dcvs.extra-buff-count 2
-        vidc.debug.level 0
-        ro.vendor.extension_library libqti-perfd-client.so
-        ro.vendor.qti.sys.fw.bg_apps_limit 34
-        debug.enable.gamed 0
-        ro.min_freq_0 307200
-        ro.min_freq_1 307200
-        ro.min_freq_2 307200
-        ro.min_freq_3 307200
-        persist.radio.efssync true
-        persist.vendor.radio.custom_ecc 1
-        persist.vendor.radio.ignore_dom_time 10
-        persist.vendor.radio.data_ltd_sys_ind 1
-        persist.vendor.radio.data_con_rprt 1
-        ro.data.large_tcp_window_size true
-        wifi.supplicant_scan_interval 3600
-        persist.sys.use_16bpp_alpha 1
-        persist.sys.scrollingcache 1
-        ro.min.fling_velocity 160
-        ro.max.fling_velocity 20000
-        persist.sys.purgeable_assets 1
-        ro.sys.fw.dex2oat_thread_count 4
-        dalvik.vm.dex2oat-threads 4
-        dalvik.vm.image-dex2oat-threads 4
-        debug.generate-debug-info false
-        sys.use_fifo_ui 1
-        ro.logdumpd.enabled 0
-        ro.boot.vendor.overlay.theme com.google.android.theme.pixel
-        ro.com.google.ime.theme_id 5
-        persist.vendor.qti.inputopts.enable true
-        persist.vendor.qti.inputopts.movetouchslop 0.6
-        ro.hwui.texture_cache_size 96
-        ro.hwui.layer_cache_size 64
-        ro.hwui.r_buffer_cache_size 12
-        ro.hwui.path_cache_size 39
-        ro.hwui.gradient_cache_size 1
-        ro.hwui.drop_shadow_cache_size 7
-        ro.hwui.texture_cache_flushrate 0.4
-        ro.hwui.text_small_cache_width 2048
-        ro.hwui.text_small_cache_height 2048
-        ro.hwui.text_large_cache_width 3072
-        ro.hwui.text_large_cache_height 2048
+        setprop persist.camera.HAL3.enabled 1
+        setprop Camera.no_navigation_bar true
+        setprop persist.ts.postmakeup false
+        setprop persist.ts.rtmakeup false
+        setprop ro.qualcomm.cabl 0
+        setprop ro.qcom.ad 1
+        setprop ro.qcom.ad.calib.data /system/etc/calib.cfg
+        setprop ro.qcom.ad.sensortype 2
+        setprop ro.sys.display.support 63
+        setprop vendor.display.enable_default_color_mode 1
+        setprop debug.sf.enable_hwc_vds 1
+        setprop debug.egl.hw 1
+        setprop debug.gralloc.enable_fb_ubwc 1
+        setprop debug.sf.hw 1
+        setprop debug.sf.latch_unsignaled 1
+        setprop dev.pm.dyn_samplingrate 1
+        setprop persist.demo.hdmirotationlock false
+        setprop persist.hwc.enable_vds 1
+        setprop persist.debug.wfd.enable 1
+        setprop persist.sys.wfd.virtual 0
+        setprop ro.opengles.version 196610
+        setprop ro.sf.lcd_density 480
+        setprop sdm.debug.disable_rotator_split 1
+        setprop sdm.debug.disable_skip_validate 1
+        setprop sdm.perf_hint_window 50
+        setprop persist.metadata_dynfps.disable true
+        setprop persist.debug.sf.statistics 0
+        setprop debug.sf.recomputecrop 0
+        setprop persist.sys.pd_enable 0
+        setprop media.stagefright.enable-player true
+        setprop media.stagefright.enable-http true
+        setprop media.stagefright.enable-aac true
+        setprop media.stagefright.enable-qcp true
+        setprop media.stagefright.enable-fma2dp true
+        setprop media.stagefright.enable-scan true
+        setprop media.stagefright.audio.sink 280
+        setprop media.msm8996hw 1
+        setprop mm.enable.smoothstreaming true
+        setprop mm.enable.sec.smoothstreaming true
+        setprop mmp.enable.3g2 true
+        setprop media.aac_51_output_enabled true
+        setprop av.debug.disable.pers.cache true
+        setprop mm.enable.qcom_parser 1048575
+        setprop persist.mm.enable.prefetch true
+        setprop vendor.vidc.enc.disable.pq true
+        setprop vidc.enc.dcvs.extra-buff-count 2
+        setprop vidc.debug.level 0
+        setprop ro.vendor.extension_library libqti-perfd-client.so
+        setprop ro.vendor.qti.sys.fw.bg_apps_limit 34
+        setprop debug.enable.gamed 0
+        setprop ro.min_freq_0 307200
+        setprop ro.min_freq_1 307200
+        setprop ro.min_freq_2 307200
+        setprop ro.min_freq_3 307200
+        setprop persist.radio.efssync true
+        setprop persist.vendor.radio.custom_ecc 1
+        setprop persist.vendor.radio.ignore_dom_time 10
+        setprop persist.vendor.radio.data_ltd_sys_ind 1
+        setprop persist.vendor.radio.data_con_rprt 1
+        setprop ro.data.large_tcp_window_size true
+        setprop wifi.supplicant_scan_interval 3600
+        setprop persist.sys.use_16bpp_alpha 1
+        setprop persist.sys.scrollingcache 1
+        setprop ro.min.fling_velocity 160
+        setprop ro.max.fling_velocity 20000
+        setprop persist.sys.purgeable_assets 1
+        setprop ro.sys.fw.dex2oat_thread_count 4
+        setprop dalvik.vm.dex2oat-threads 4
+        setprop dalvik.vm.image-dex2oat-threads 4
+        setprop debug.generate-debug-info false
+        setprop sys.use_fifo_ui 1
+        setprop ro.logdumpd.enabled 0
+        setprop ro.boot.vendor.overlay.theme com.google.android.theme.pixel
+        setprop ro.com.google.ime.theme_id 5
+        setprop persist.vendor.qti.inputopts.enable true
+        setprop persist.vendor.qti.inputopts.movetouchslop 0.6
+        setprop ro.hwui.texture_cache_size 96
+        setprop ro.hwui.layer_cache_size 64
+        setprop ro.hwui.r_buffer_cache_size 12
+        setprop ro.hwui.path_cache_size 39
+        setprop ro.hwui.gradient_cache_size 1
+        setprop ro.hwui.drop_shadow_cache_size 7
+        setprop ro.hwui.texture_cache_flushrate 0.4
+        setprop ro.hwui.text_small_cache_width 2048
+        setprop ro.hwui.text_small_cache_height 2048
+        setprop ro.hwui.text_large_cache_width 3072
+        setprop ro.hwui.text_large_cache_height 2048
 
 on property:dev.bootcomplete=1
     trigger darkness
