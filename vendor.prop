@@ -42,10 +42,12 @@ ro.btconfig.chip=QCA6164
 ro.btconfig.dev=/dev/ttyHS0
 
 # Camera
-media.camera.ts.monotonic=0
 persist.camera.gyro.disable=0
-persist.camera.HAL3.enabled=1
 persist.camera.imglib.fddsp=1
+persist.camera.HAL3.enabled=1
+Camera.no_navigation_bar=true
+persist.ts.postmakeup=false
+persist.ts.rtmakeup=false
 
 # CNE
 persist.cne.feature=1
@@ -62,6 +64,9 @@ ro.qcom.ad=1
 ro.qcom.ad.calib.data=/system/etc/calib.cfg
 ro.qcom.ad.sensortype=2
 
+# Display feature (bit0-ColorPrefer bit1-EyeCare bit2-AD bit3-CE bit4-CABC bit5-SRGB)
+ro.sys.display.support=63
+vendor.display.enable_default_color_mode=1
 # DRM
 drm.service.enabled=true
 
@@ -69,6 +74,7 @@ drm.service.enabled=true
 # ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
 # Graphics
+debug.sf.enable_hwc_vds=1
 debug.egl.hw=1
 debug.gralloc.enable_fb_ubwc=1
 debug.sf.hw=1
@@ -76,6 +82,7 @@ debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
+persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
 ro.opengles.version=196610
 ro.sf.lcd_density=480
@@ -84,6 +91,8 @@ sdm.debug.disable_skip_validate=1
 sdm.perf_hint_window=50
 persist.metadata_dynfps.disable=true
 persist.debug.sf.statistics=0
+debug.sf.recomputecrop=0
+persist.sys.pd_enable=0
 
 # Media
 media.stagefright.enable-player=true
@@ -116,7 +125,12 @@ persist.nfc.smartcard.config=SIM1,SIM2,eSE1
 
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
-ro.vendor.qti.sys.fw.bg_apps_limit=60
+ro.vendor.qti.sys.fw.bg_apps_limit=34
+debug.enable.gamed=0
+ro.min_freq_0=307200
+ro.min_freq_1=307200
+ro.min_freq_2=307200
+ro.min_freq_3=307200
 
 # Radio
 DEVICE_PROVISIONED=1
@@ -126,14 +140,20 @@ ro.telephony.call_ring.multiple=false
 ro.telephony.default_cdma_sub=0
 ro.telephony.default_network=20,20
 persist.data.qmi.adb_logmask=0
+persist.net.doxlat=true
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.force_on_dc=true
 persist.radio.multisim.config=dsds
 persist.radio.redir_party_num=1
 persist.radio.aosp_usr_pref_sel=true
 persist.vendor.radio.custom_ecc=1
+persist.vendor.radio.custom_ecc=1
+persist.vendor.radio.ignore_dom_time=10
+persist.vendor.radio.data_ltd_sys_ind=1
+persist.vendor.radio.data_con_rprt=1
 persist.vendor.radio.rat_on=combine
 persist.vendor.radio.sib16_support=1
+persist.radio.efssync=true
 
 # RmNet Data
 persist.rmnet.data.enable=true
@@ -162,24 +182,12 @@ sys.usb.mtp.device_type=3
 
 # Wifi
 wifi.interface=wlan0
-wifi.supplicant_scan_interval=360
+wifi.supplicant_scan_interval=3600
 
-# Improve cached apps limit
-ro.sys.fw.bg_apps_limit=55
 
 # Background service properties
 ro.config.max_starting_bg=4
 persist.added_boot_bgservices=4
-
-# Reschedule the services during app launch
-ro.am.reschedule_service=true
-
-# Trim Settings
-ro.vendor.qti.sys.fw.use_trim_settings=true
-ro.vendor.qti.sys.fw.empty_app_percent=50
-ro.vendor.qti.sys.fw.trim_empty_percent=100
-ro.vendor.qti.sys.fw.trim_cache_percent=100
-ro.vendor.qti.sys.fw.trim_enable_memory=2147483648
 
 # VIDC: debug_levels
 # 1:ERROR 2:HIGH 4:LOW 0:NOLOGS 7:AllLOGS
@@ -211,6 +219,10 @@ sys.use_fifo_ui=1
 # Disable logdump
 ro.logdumpd.enabled=0
 
-# GBoard Themes
+# Themes
+ro.boot.vendor.overlay.theme=com.google.android.theme.pixel
 ro.com.google.ime.theme_id=5
 
+# Touch
+persist.vendor.qti.inputopts.enable=true
+persist.vendor.qti.inputopts.movetouchslop=0.6
