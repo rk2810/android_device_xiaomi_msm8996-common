@@ -22,14 +22,14 @@ on darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 0
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 13000
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "13000 1401600:21000 1478400:34000"
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 960000
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 30000
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/screen_off_max 1382400
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
@@ -38,7 +38,7 @@ on darkness
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
             # Darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/above_hispeed_delay 13000
+                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/above_hispeed_delay "13000 1401600:21000 1478400:34000"
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/fastlane 0
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_hispeed_load 80
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_lowspeed_load 10
@@ -48,7 +48,7 @@ on darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/min_sample_time 21000
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/powersave_bias 1
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/screen_off_max 1382400
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
+                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "80 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
@@ -66,25 +66,23 @@ on darkness
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
             # Interactive
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "13000 1324800:21000 1632000:34000"
+                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "13000 1324800:21000 1632000:34000 1824000:55000"
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 1248000
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 1
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 30000
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/screen_off_max 1382400
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
+                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack 20000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
-                # write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
-                # write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
             # Darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/above_hispeed_delay "13000 1324800:21000 1632000:34000"
+                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/above_hispeed_delay "13000 1324800:21000 1632000:34000 1824000:55000"
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/fastlane 0
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_hispeed_load 85
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_lowspeed_load 15
@@ -94,7 +92,7 @@ on darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/min_sample_time 21000
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 1
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/screen_off_max 1382400
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
+                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "85 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
@@ -107,10 +105,6 @@ on darkness
             # Set Default CPU Governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
         #
-        # Lock Interactive CPU Governor
-            # write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
-            # write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
-        #
         # Re-enable thermal hotplug
             write /sys/module/msm_thermal/core_control/enabled 1
     #
@@ -118,6 +112,17 @@ on darkness
         chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 0
         chmod 644 /proc/sys/kernel/sched_boost
+    #
+    # CPU Core Control
+        # Little
+            write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred "1 1"
+        # Big
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_up_thres 85
+            write /sys/devices/system/cpu/cpu2/core_ctl/busy_down_thres 80
+            write /sys/devices/system/cpu/cpu2/core_ctl/is_big_cluster 1
+            write /sys/devices/system/cpu/cpu2/core_ctl/min_cpus 0
+            write /sys/devices/system/cpu/cpu2/core_ctl/not_preferred "0 0"
+            write /sys/devices/system/cpu/cpu2/core_ctl/task_thres 4
     #
     # CPU Input Boost
         chmod 755 /sys/module/msm_performance/parameters/touchboost
@@ -203,104 +208,8 @@ on darkness
         write /sys/kernel/fp_boost/enabled 1
         write /sys/kernel/mm/uksm/run_charging 1
     #
-    # System Property Tweaks
+    # System Darkness Signature
         setprop net.hostname Darkness
-        setprop ro.config.fha_enable true
-        setprop ro.sys.fw.bg_apps_limit 34
-        setprop ro.config.dha_cached_max 16
-        setprop ro.config.dha_empty_max 42
-        setprop ro.config.dha_empty_init 32
-        setprop ro.config.dha_lmk_scale 0.545
-        setprop ro.config.dha_th_rate 2.3
-        setprop ro.config.sdha_apps_bg_max 64
-        setprop ro.config.sdha_apps_bg_min 8
-        setprop persist.camera.HAL3.enabled 1
-        setprop Camera.no_navigation_bar true
-        setprop persist.ts.postmakeup false
-        setprop persist.ts.rtmakeup false
-        setprop ro.qualcomm.cabl 0
-        setprop ro.qcom.ad 1
-        setprop ro.qcom.ad.calib.data /system/etc/calib.cfg
-        setprop ro.qcom.ad.sensortype 2
-        setprop ro.sys.display.support 63
-        setprop vendor.display.enable_default_color_mode 1
-        setprop debug.sf.enable_hwc_vds 1
-        setprop debug.egl.hw 1
-        setprop debug.gralloc.enable_fb_ubwc 1
-        setprop debug.sf.hw 1
-        setprop debug.sf.latch_unsignaled 1
-        setprop dev.pm.dyn_samplingrate 1
-        setprop persist.demo.hdmirotationlock false
-        setprop persist.hwc.enable_vds 1
-        setprop persist.debug.wfd.enable 1
-        setprop persist.sys.wfd.virtual 0
-        setprop ro.opengles.version 196610
-        setprop ro.sf.lcd_density 480
-        setprop sdm.debug.disable_rotator_split 1
-        setprop sdm.debug.disable_skip_validate 1
-        setprop sdm.perf_hint_window 50
-        setprop persist.metadata_dynfps.disable true
-        setprop persist.debug.sf.statistics 0
-        setprop debug.sf.recomputecrop 0
-        setprop persist.sys.pd_enable 0
-        setprop media.stagefright.enable-player true
-        setprop media.stagefright.enable-http true
-        setprop media.stagefright.enable-aac true
-        setprop media.stagefright.enable-qcp true
-        setprop media.stagefright.enable-fma2dp true
-        setprop media.stagefright.enable-scan true
-        setprop media.stagefright.audio.sink 280
-        setprop media.msm8996hw 1
-        setprop mm.enable.smoothstreaming true
-        setprop mm.enable.sec.smoothstreaming true
-        setprop mmp.enable.3g2 true
-        setprop media.aac_51_output_enabled true
-        setprop av.debug.disable.pers.cache true
-        setprop mm.enable.qcom_parser 1048575
-        setprop persist.mm.enable.prefetch true
-        setprop vendor.vidc.enc.disable.pq true
-        setprop vidc.enc.dcvs.extra-buff-count 2
-        setprop vidc.debug.level 0
-        setprop ro.vendor.extension_library libqti-perfd-client.so
-        setprop ro.vendor.qti.sys.fw.bg_apps_limit 34
-        setprop debug.enable.gamed 0
-        setprop ro.min_freq_0 307200
-        setprop ro.min_freq_1 307200
-        setprop ro.min_freq_2 307200
-        setprop ro.min_freq_3 307200
-        setprop persist.radio.efssync true
-        setprop persist.vendor.radio.custom_ecc 1
-        setprop persist.vendor.radio.ignore_dom_time 10
-        setprop persist.vendor.radio.data_ltd_sys_ind 1
-        setprop persist.vendor.radio.data_con_rprt 1
-        setprop ro.data.large_tcp_window_size true
-        setprop wifi.supplicant_scan_interval 3600
-        setprop persist.sys.use_16bpp_alpha 1
-        setprop persist.sys.scrollingcache 1
-        setprop ro.min.fling_velocity 160
-        setprop ro.max.fling_velocity 20000
-        setprop persist.sys.purgeable_assets 1
-        setprop ro.sys.fw.dex2oat_thread_count 4
-        setprop dalvik.vm.dex2oat-threads 4
-        setprop dalvik.vm.image-dex2oat-threads 4
-        setprop debug.generate-debug-info false
-        setprop sys.use_fifo_ui 1
-        setprop ro.logdumpd.enabled 0
-        setprop ro.boot.vendor.overlay.theme com.google.android.theme.pixel
-        setprop ro.com.google.ime.theme_id 5
-        setprop persist.vendor.qti.inputopts.enable true
-        setprop persist.vendor.qti.inputopts.movetouchslop 0.6
-        setprop ro.hwui.texture_cache_size 96
-        setprop ro.hwui.layer_cache_size 64
-        setprop ro.hwui.r_buffer_cache_size 12
-        setprop ro.hwui.path_cache_size 39
-        setprop ro.hwui.gradient_cache_size 1
-        setprop ro.hwui.drop_shadow_cache_size 7
-        setprop ro.hwui.texture_cache_flushrate 0.4
-        setprop ro.hwui.text_small_cache_width 2048
-        setprop ro.hwui.text_small_cache_height 2048
-        setprop ro.hwui.text_large_cache_width 3072
-        setprop ro.hwui.text_large_cache_height 2048
 
 on property:dev.bootcomplete=1
     trigger darkness
