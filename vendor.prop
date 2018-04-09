@@ -78,6 +78,7 @@ drm.service.enabled=true
 debug.sf.enable_hwc_vds=1
 debug.egl.hw=1
 debug.gralloc.enable_fb_ubwc=1
+debug.gralloc.gfx_ubwc_disable=0
 debug.sf.hw=1
 debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
@@ -94,6 +95,7 @@ persist.metadata_dynfps.disable=true
 persist.debug.sf.statistics=0
 debug.sf.recomputecrop=0
 persist.sys.pd_enable=0
+persist.sys.force_sw_gles=0
 
 # Media
 media.stagefright.enable-player=true
@@ -227,3 +229,18 @@ ro.com.google.ime.theme_id=5
 # Touch
 persist.vendor.qti.inputopts.enable=true
 persist.vendor.qti.inputopts.movetouchslop=0.6
+
+# Core Control
+ro.vendor.qti.core_ctl_min_cpu=1
+ro.vendor.qti.core_ctl_max_cpu=4
+
+# Experimental
+debug.enabletr=true
+debug.hwui.render_dirty_regions=false
+debug.hwui.disable_vsync=true
+debug.hwui.profile=false
+debug.hwui.profile.maxframes=60
+debug.hwui.show_dirty_regions=false
+# debug.hwui.renderer=skiagl
+debug.hwui.renderer=opengl
+debug.hwui.level=0
