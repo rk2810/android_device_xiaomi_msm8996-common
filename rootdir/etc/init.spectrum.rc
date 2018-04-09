@@ -34,7 +34,7 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
@@ -45,7 +45,7 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_lowspeed_load 10
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/min_sample_time 21000
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/powersave_bias 1
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "80 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
+                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "80 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
@@ -59,7 +59,7 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
+                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
@@ -72,7 +72,7 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_lowspeed_load 15
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/min_sample_time 21000
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 1
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "85 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
+                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "85 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
@@ -131,7 +131,7 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 70
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 34000
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "20 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
@@ -142,7 +142,7 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_lowspeed_load 5
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/min_sample_time 34000
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/powersave_bias 0
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "20 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
+                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "10 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
@@ -156,7 +156,7 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 75
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 34000
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "25 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
+                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "15 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
@@ -169,7 +169,7 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_lowspeed_load 10
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/min_sample_time 34000
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "25 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
+                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "15 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
@@ -281,7 +281,7 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 60
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 55000
-                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "1 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "1 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
@@ -292,7 +292,7 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_lowspeed_load 1
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/min_sample_time 55000
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/powersave_bias 0
-                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "1 307200:30 422400:35 480000:40 556800:45 652800:50 729600:55 844800:60 960000:65 1036800:70 1113600:75 1190400:80 1228800:85 1324800:90 1401600:95 1478400:97 1593600:99"
+                write /sys/devices/system/cpu/cpu0/cpufreq/darkness/target_loads "1 307200:20 422400:25 480000:30 556800:35 652800:40 729600:45 844800:50 960000:55 1036800:60 1113600:65 1190400:70 1228800:75 1324800:80 1401600:85 1478400:90 1593600:95"
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
@@ -306,7 +306,7 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 65
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 55000
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "1 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
+                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "1 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
@@ -319,7 +319,7 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_lowspeed_load 5
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/min_sample_time 55000
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/powersave_bias 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "1 307200:30 480000:35 652800:40 883200:45 940800:50 1190400:55 1248000:60 1324800:65 1478400:70 1555200:75 1632000:80 1785600:85 1824000:90 1996800:95 2073600:97 2150400:99"
+                write /sys/devices/system/cpu/cpu2/cpufreq/darkness/target_loads "1 307200:20 480000:25 652800:30 883200:35 940800:40 1190400:45 1248000:50 1324800:55 1478400:60 1555200:65 1632000:70 1785600:75 1824000:80 1996800:85 2073600:90 2150400:95"
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
