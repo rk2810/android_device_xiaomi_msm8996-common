@@ -3,10 +3,6 @@
 # Maintainer    : MOVZX (MOVZX@Telegram.org)
 #
 
-on boooooooot
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
-
 on darkness
     # Bring all CPU Cores to online
         write /sys/devices/system/cpu/cpu0/online 1
@@ -136,9 +132,7 @@ on darkness
             write /sys/devices/system/cpu/cpu2/core_ctl/task_thres 4
     #
     # CPU Input Boost
-        chmod 755 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/msm_performance/parameters/touchboost 0
-        chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/input_boost_enabled 1
         write /sys/module/cpu_boost/parameters/input_boost_freq "0:960000 1:960000 2:1248000 3:1248000"
         write /sys/module/cpu_boost/parameters/input_boost_ms 50
@@ -184,15 +178,15 @@ on darkness
         write /sys/kernel/sound_control/speaker_gain 13
     #
     # Set I/O Scheduler
-        setprop sys.io.scheduler cfq
+        setprop sys.io.scheduler fiops
         # SDA
         write /sys/block/sda/queue/iostats 0
         write /sys/block/sda/queue/read_ahead_kb 128
-        write /sys/block/sda/queue/scheduler cfq
+        write /sys/block/sda/queue/scheduler fiops
         # SDE
         write /sys/block/sde/queue/iostats 0
         write /sys/block/sde/queue/read_ahead_kb 128
-        write /sys/block/sde/queue/scheduler cfq
+        write /sys/block/sde/queue/scheduler fiops
     #
     # UFS Tweaks
         write /sys/module/scsi_mod/parameters/use_blk_mq Y
@@ -201,16 +195,13 @@ on darkness
         write /sys/devices/soc/624000.ufshc/624000.ufshc:ufs_variant/pm_qos_enable 1
     #
     # KCAL Colour Control
-        chmod 755 /sys/devices/platform/kcal_ctrl.0/kcal_enable
-        write /sys/devices/platform/kcal_ctrl.0/kcal_enable 0
-        chmod 644 /sys/devices/platform/kcal_ctrl.0/kcal_enable
+        write /sys/devices/platform/kcal_ctrl.0/kcal_enable 1
     #
     # Misc Tweaks
         write /sys/module/workqueue/parameters/power_efficient Y
-        write /sys/module/sync/parameters/fsync_enabled N
-        write /sys/module/qpnp_smbcharger/parameters/default_dcp_icl_ma 2400
-        write /sys/module/qpnp_smbcharger/parameters/default_hvdcp_icl_ma 2400
-        write /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma 2400
+        write /sys/module/sync/parameters/fsync_enabled Y
+        write /sys/module/qpnp_smbcharger/parameters/default_hvdcp_icl_ma 1500
+        write /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma 2700
         write /sys/module/battery_current_limit/parameters/low_battery_value 5
         chmod 755 /sys/module/msm_thermal/vdd_restriction/enabled
         write /sys/module/msm_thermal/vdd_restriction/enabled 0
@@ -221,9 +212,6 @@ on darkness
     #
     # System Darkness Signature
         setprop net.hostname Darkness
-
-on property:init.svc.bootanim=running
-    trigger boooooooot
 
 on property:dev.bootcomplete=1
     trigger darkness
