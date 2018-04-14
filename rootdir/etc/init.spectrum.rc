@@ -80,14 +80,10 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
     #
     # CPU Scheduler
-        chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 0
-        chmod 644 /proc/sys/kernel/sched_boost
     #
     # CPU Input Boost
-        chmod 755 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/msm_performance/parameters/touchboost 0
-        chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input N
     #
     # Set OnePlus OPChain
@@ -177,14 +173,10 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
     #
     # CPU Scheduler
-        chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 1
-        chmod 644 /proc/sys/kernel/sched_boost
     #
     # CPU Input Boost
-        chmod 755 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/msm_performance/parameters/touchboost 1
-        chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input Y
     #
     # Set OnePlus OPChain
@@ -230,14 +222,10 @@ on property:persist.spectrum.profile=2
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor madness
     #
     # CPU Scheduler
-        chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 0
-        chmod 644 /proc/sys/kernel/sched_boost
     #
     # CPU Input Boost
-        chmod 755 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/msm_performance/parameters/touchboost 0
-        chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input N
     #
     # Set OnePlus OPChain
@@ -327,14 +315,10 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
     #
     # CPU Scheduler
-        chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 1
-        chmod 644 /proc/sys/kernel/sched_boost
     #
     # CPU Input Boost
-        chmod 755 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/msm_performance/parameters/touchboost 1
-        chmod 644 /sys/module/msm_performance/parameters/touchboost
         write /sys/module/cpu_boost/parameters/sched_boost_on_input Y
     #
     # Set OnePlus OPChain
