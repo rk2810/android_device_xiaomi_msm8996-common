@@ -30,7 +30,8 @@ on property:persist.spectrum.profile=0
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
             # Interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 80
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 21000
@@ -39,6 +40,7 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
             # Darkness
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/fastlane 0
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_hispeed_load 80
@@ -50,12 +52,14 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
             # Set Default CPU Governor
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
             # Interactive
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 85
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 21000
@@ -66,6 +70,7 @@ on property:persist.spectrum.profile=0
                 # write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
                 # write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
             # Darkness
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/fastlane 0
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_hispeed_load 85
@@ -77,6 +82,7 @@ on property:persist.spectrum.profile=0
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate 20000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
             # Set Default CPU Governor
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
     #
     # CPU Scheduler
@@ -123,7 +129,8 @@ on property:persist.spectrum.profile=1
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
             # Interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 70
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 34000
@@ -132,6 +139,7 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
             # Darkness
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/fastlane 1
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_hispeed_load 70
@@ -143,12 +151,14 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
             # Set Default CPU Governor
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
             # Interactive
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 75
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 34000
@@ -159,6 +169,7 @@ on property:persist.spectrum.profile=1
                 # write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
                 # write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
             # Darkness
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/fastlane 1
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_hispeed_load 75
@@ -170,6 +181,7 @@ on property:persist.spectrum.profile=1
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
             # Set Default CPU Governor
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
     #
     # CPU Scheduler
@@ -214,11 +226,13 @@ on property:persist.spectrum.profile=2
             write /sys/devices/system/cpu/cpu0/online 1
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1324800
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
+            chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor madness
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1824000
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
+            chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor madness
     #
     # CPU Scheduler
@@ -264,8 +278,9 @@ on property:persist.spectrum.profile=3
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
             write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
             # Interactive
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 0
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 60
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 55000
@@ -274,6 +289,7 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
             # Darkness
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/fastlane 1
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/go_hispeed_load 60
@@ -285,12 +301,14 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/darkness/timer_rate
             # Set Default CPU Governor
+                chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor darkness
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
             # Interactive
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 65
                 write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 55000
@@ -301,6 +319,7 @@ on property:persist.spectrum.profile=3
                 # write /sys/devices/system/cpu/cpu0/cpufreq/interactive/is_locked 1
                 # write /sys/devices/system/cpu/cpu2/cpufreq/interactive/is_locked 1
             # Darkness
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/fastlane 1
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/go_hispeed_load 65
@@ -312,6 +331,7 @@ on property:persist.spectrum.profile=3
                 write /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate 10000
                 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/darkness/timer_rate
             # Set Default CPU Governor
+                chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor darkness
     #
     # CPU Scheduler
