@@ -115,9 +115,13 @@ on darkness
             write /sys/module/msm_thermal/core_control/enabled 1
     #
     # CPU Scheduler
+        write /proc/sys/kernel/sched_big_waker_task_load 25
         chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 0
-        chmod 644 /proc/sys/kernel/sched_boost
+        write /proc/sys/kernel/sched_rt_period_us 1000000
+        write /proc/sys/kernel/sched_rt_runtime_us 950000
+        write /proc/sys/kernel/sched_small_wakee_task_load 10
+        write /proc/sys/kernel/sched_wakeup_load_threshold 110
     #
     # CPU Core Control
         # Little
@@ -174,6 +178,7 @@ on darkness
         write /sys/kernel/sched/gentle_fair_sleepers 0
     #
     # Sound Control
+        write /sys/kernel/sound_control/headphone_gain "8 8"
         write /sys/kernel/sound_control/mic_gain 5
         write /sys/kernel/sound_control/speaker_gain 13
     #
