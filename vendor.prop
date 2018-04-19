@@ -29,6 +29,7 @@ vendor.audio.parser.ip.buffer.size=262144
 vendor.audio.safx.pbe.enabled=true
 vendor.audio.tunnel.encode=false
 vendor.voice.path.for.pcm.voip=true
+qcom.hw.aac.encoder=true
 
 # Bluetooth
 bt.max.hfpclient.connections=1
@@ -80,6 +81,7 @@ debug.egl.hw=1
 debug.gralloc.enable_fb_ubwc=1
 debug.gralloc.gfx_ubwc_disable=0
 debug.sf.hw=1
+dalvik.vm.heapsize=36m
 debug.sf.latch_unsignaled=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -105,7 +107,6 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 media.stagefright.audio.sink=280
-media.msm8996hw=1
 mm.enable.smoothstreaming=true
 mm.enable.sec.smoothstreaming=true
 mmp.enable.3g2=true
@@ -134,6 +135,9 @@ ro.min_freq_0=307200
 ro.min_freq_1=307200
 ro.min_freq_2=307200
 ro.min_freq_3=307200
+
+# Priv-app permissions whitelist
+ro.control_privapp_permissions=enforce
 
 # Radio
 DEVICE_PROVISIONED=1
@@ -233,17 +237,6 @@ persist.vendor.qti.inputopts.movetouchslop=0.6
 # Core Control
 ro.vendor.qti.core_ctl_min_cpu=1
 ro.vendor.qti.core_ctl_max_cpu=4
-
-# Experimental
-debug.enabletr=true
-debug.hwui.render_dirty_regions=false
-debug.hwui.disable_vsync=true
-debug.hwui.profile=false
-debug.hwui.profile.maxframes=60
-debug.hwui.show_dirty_regions=false
-# debug.hwui.renderer=skiagl
-debug.hwui.renderer=opengl
-debug.hwui.level=0
 
 # EAS
 ro.hardware.power=gemini

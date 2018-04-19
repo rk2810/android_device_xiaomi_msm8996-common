@@ -66,10 +66,11 @@ public class Constants {
         sBooleanNodePreferenceMap.put(FP_WAKEUP_KEY, FP_WAKEUP_NODE);
         sBooleanNodePreferenceMap.put(DT2W_KEY, DT2W_NODE);
 
-        sNodeDefaultMap.put(BUTTON_SWAP_KEY, true);
-        sNodeDefaultMap.put(DT2W_KEY, true);
+        sNodeDefaultMap.put(BUTTON_SWAP_KEY, false);
+        sNodeDefaultMap.put(DT2W_KEY, false);
         sNodeDefaultMap.put(FP_HOME_KEY, true);
         sNodeDefaultMap.put(FP_WAKEUP_KEY, true);
+        sNodeDefaultMap.put(FP_POCKETMODE_KEY, true);
 
         sNodeDependencyMap.put(FP_HOME_KEY, new String[]{ VIRTUAL_KEYS_NODE, "1" });
     }

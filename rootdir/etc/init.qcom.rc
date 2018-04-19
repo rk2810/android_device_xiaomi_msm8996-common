@@ -31,13 +31,13 @@ import /vendor/etc/init/hw/init.spectrum.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 import /vendor/etc/init/hw/init.target.rc
 
-
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
     chown root system /dev/kmsg
     chmod 0620 /dev/kmsg
 
+    mkdir /dsp 0771 media media
     symlink /data/tombstones /tombstones
 
     # ZRAM setup
@@ -58,6 +58,43 @@ on init
     chmod 0660 /sys/fs/cgroup/memory/bg/tasks
 
     write /sys/module/qpnp_rtc/parameters/poweron_alarm 1
+
+    mkdir /dev/cpuset/system/performance 0750 root system
+    write /dev/cpuset/system/performance/cpus 0
+    write /dev/cpuset/system/performance/mems 0
+    chown system system /dev/cpuset/system/performance/tasks
+    chmod 0660 /dev/cpuset/system/performance/tasks
+
+    mkdir /dev/cpuset/system/background 0750 root system
+    write /dev/cpuset/system/background/cpus 0
+    write /dev/cpuset/system/background/mems 0
+    chown system system /dev/cpuset/system/background/tasks
+    chmod 0660 /dev/cpuset/system/background/tasks
+
+    mkdir /dev/cpuset/application 0750 root system
+    write /dev/cpuset/application/cpus 0
+    write /dev/cpuset/application/mems 0
+    chown system system /dev/cpuset/application/tasks
+    chmod 0660 /dev/cpuset/application/tasks
+
+    mkdir /dev/cpuset/application/performance 0750 root system
+    write /dev/cpuset/application/performance/cpus 0
+    write /dev/cpuset/application/performance/mems 0
+    chown system system /dev/cpuset/application/performance/tasks
+    chmod 0660 /dev/cpuset/application/performance/tasks
+
+    mkdir /dev/cpuset/application/background 0750 root system
+    write /dev/cpuset/application/background/cpus 0
+    write /dev/cpuset/application/background/mems 0
+    chown system system /dev/cpuset/application/background/tasks
+    chmod 0660 /dev/cpuset/application/background/tasks
+
+    # set default schedTune value for foreground/top-app (only affects EAS)
+    write /dev/stune/foreground/schedtune.prefer_idle 1
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/top-app/schedtune.prefer_idle 1
+    write /dev/stune/rt/schedtune.boost 30
+    write /dev/stune/rt/schedtune.prefer_idle 1
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
@@ -100,8 +137,6 @@ on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
 
-    mkdir /data/misc/ipa 0700 net_admin net_admin
-
     mkdir /data/vendor/ramdump 0771 root system
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
@@ -116,6 +151,10 @@ on post-fs-data
     # Create netmgr log dir
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
+
+    # Create ipacm log dir
+    mkdir /data/vendor/ipa 0770 radio radio
+    chmod 0770 /data/vendor/ipa
 
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
@@ -160,9 +199,18 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
     # Create PERFD deamon related dirs
-    mkdir /data/vendor/perfd 0770 root system
-    chmod 2770 /data/vendor/perfd
-    rm /data/vendor/perfd/default_values
+    setprop ro.min_freq_0 307200
+    setprop ro.min_freq_1 307200
+    setprop ro.min_freq_2 307200
+    setprop ro.min_freq_3 307200
+    mkdir /data/misc/perfd 0755 root system
+    chmod 2755 /data/misc/perfd
+    mkdir /data/system/perfd 0770 root system
+    rm /data/system/perfd/default_values
+    chmod 2770 /data/system/perfd
+
+    # Create IOP deamon related dirs
+    mkdir /data/misc/iop 0770 root system
 
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
@@ -217,6 +265,47 @@ on boot
     chown system system /sys/module/msm_core/parameters/disabled
     chown system system /sys/kernel/debug/msm_core/enable
     chown system system /sys/kernel/debug/msm_core/ptable
+
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_hue
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_min
+    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_val
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_enable
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_cont
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_sat
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_hue
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_min
+    chmod 0660 /sys/devices/platform/kcal_ctrl.0/kcal_val
+
+    # Set schedutil permissions
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "schedutil"
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "schedutil"
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu1/cpufreq/schedutil/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu3/cpufreq/schedutil/up_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu1/cpufreq/schedutil/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us
+    chown system system /sys/devices/system/cpu/cpu3/cpufreq/schedutil/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu1/cpufreq/schedutil/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu3/cpufreq/schedutil/up_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu1/cpufreq/schedutil/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us
+    chmod 0664 /sys/devices/system/cpu/cpu3/cpufreq/schedutil/down_rate_limit_us
+
+    # Access permission for vibration intensity level
+    chown system system /sys/class/timed_output/vibrator/vtg_level
+    chmod 0660 /sys/class/timed_output/vibrator/vtg_level
 
     # Access permission for fingerprint
     chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
@@ -301,6 +390,9 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    # Access permission for QC3.0 charging current limit
+    chown system system /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma
+
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
     swapon_all /vendor/etc/fstab.qcom
@@ -315,8 +407,14 @@ on property:sys.boot_completed=1
     # CPE fw_name used by sound trigger HAL
     chown media audio /sys/kernel/wcd_cpe0/fw_name
 
+    #Start TFA calibration script
+    start tfa-sh
+
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
+
+on property:ro.boot.hwversion=2.2.0
+    setprop sys.qcom.thermalcfg /vendor/etc/thermal-engine-8996-lite.conf
 
 service cnd /vendor/bin/cnd
     class main
@@ -338,8 +436,6 @@ service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
-    shutdown critical
-    ioprio rt 0
     writepid /dev/cpuset/system-background/tasks
 
 service tftp_server /vendor/bin/tftp_server
@@ -437,7 +533,7 @@ on property:sys.shutdown.requested=*
 service loc_launcher /vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet diag wifi
+    group gps inet oem_2950 wifi
     writepid /dev/cpuset/system-background/tasks
 
 service qcom-sh /vendor/bin/init.qcom.sh
@@ -530,14 +626,14 @@ service imsqmidaemon /vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio log diag
+    group radio log oem_2950
     writepid /dev/cpuset/system-background/tasks
 
 service imsdatadaemon /vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet log diag
+    group system wifi radio inet log oem_2950
     writepid /dev/cpuset/system-background/tasks
     disabled
 
@@ -568,6 +664,23 @@ service ppd /vendor/bin/mm-pp-dpps
     socket pps stream 0660 system system
     disabled
 
+service tfa-sh /vendor/bin/init.tfa.sh /vendor/etc/silence_short.wav 15 1
+    class main
+    user system
+    group system
+    disabled
+    oneshot
+
+service perfd /vendor/bin/perfd
+   class main
+   user root
+   group root system
+   writepid /dev/cpuset/system-background/tasks
+   disabled
+
+on property:sys.post_boot.parsed=1
+    start perfd
+
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
@@ -575,6 +688,8 @@ on property:init.svc.surfaceflinger=running
     start ppd
 
 on property:init.svc.surfaceflinger=restarting
+    stop hwcomposer-2-1
+    start hwcomposer-2-1
     stop ppd
 
 on property:init.svc.zygote=stopped
