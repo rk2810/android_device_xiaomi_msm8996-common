@@ -247,3 +247,6 @@ debug.hwui.level=0
 
 # EAS
 ro.hardware.power=gemini
+
+# SDCardFS
+ro.sys.sdcardfs=true
