@@ -244,3 +244,6 @@ debug.hwui.show_dirty_regions=false
 # debug.hwui.renderer=skiagl
 debug.hwui.renderer=opengl
 debug.hwui.level=0
+
+# Enable SDCardFS
+ro.sys.sdcardfs=true
