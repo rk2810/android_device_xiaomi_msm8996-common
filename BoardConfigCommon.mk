@@ -53,7 +53,7 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/msm8996
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/uber8.x/bin
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/gcc-linaro-7.3.1-2018.04-rc1-x86_64_aarch64-linux-gnu/bin
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996
