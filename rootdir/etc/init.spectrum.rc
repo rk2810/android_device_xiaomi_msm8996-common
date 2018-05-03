@@ -33,7 +33,7 @@ on property:persist.spectrum.profile=0
         write /proc/sys/kernel/sched_boost 0
     #
     # Set Adreno GPU
-        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
+        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     #
@@ -58,7 +58,7 @@ on property:persist.spectrum.profile=1
         write /proc/sys/kernel/sched_boost 1
     #
     # Set Adreno GPU
-        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
+        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 214000000
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     #
@@ -74,6 +74,8 @@ on property:persist.spectrum.profile=1
 # Battery
 on property:persist.spectrum.profile=2
     # Set CPU Parameters
+            chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+            chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
     #
     # CPU Scheduler
         write /proc/sys/kernel/sched_boost 0
@@ -104,7 +106,7 @@ on property:persist.spectrum.profile=3
         write /proc/sys/kernel/sched_boost 1
     #
     # Set Adreno GPU
-        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
+        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 3
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 315000000
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     #
