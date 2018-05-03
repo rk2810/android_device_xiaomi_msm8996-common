@@ -22,14 +22,14 @@ on darkness
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
                 write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 1000
                 write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 0
-                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 250
             # PwrUtilX
                 write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor pwrutilx
                 write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/down_rate_limit_us 1000
                 write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/iowait_boost_enable 0
-                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/up_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/up_rate_limit_us 250
             # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
         # Big
             write /sys/devices/system/cpu/cpu2/online 1
             write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
@@ -38,14 +38,14 @@ on darkness
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
                 write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 1000
                 write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
             # PwrUtilX
                 write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor pwrutilx
                 write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/down_rate_limit_us 1000
                 write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/iowait_boost_enable 0
-                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/up_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/up_rate_limit_us 500
             # Set Default CPU Governor
-                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
         #
         # Re-enable thermal hotplug
             write /sys/module/msm_thermal/core_control/enabled 1
@@ -54,12 +54,12 @@ on darkness
         chmod 755 /proc/sys/kernel/sched_boost
         write /proc/sys/kernel/sched_boost 0
     #
-    # SchedTune Boost
-        write /dev/stune/top-app/schedtune.boost 10
-        write /dev/stune/rt/schedtune.boost 30
+    # Dynamic SchedTune Boost
+        write /sys/module/cpu_boost/parameters/dynamic_stune_boost_top_app 10
+        write /sys/module/cpu_boost/parameters/dynamic_stune_boost_rt 30
     #
     # Set Adreno GPU
-        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
+        write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
         write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 0
         write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
         write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
@@ -85,19 +85,19 @@ on darkness
         write /sys/kernel/sound_control/speaker_gain 13
     #
     # Set I/O Scheduler
-        setprop sys.io.scheduler fiops
+        setprop sys.io.scheduler cfq
         # SDA
         write /sys/block/sda/queue/iostats 0
-        write /sys/block/sda/queue/read_ahead_kb 512
-        write /sys/block/sda/queue/scheduler fiops
+        write /sys/block/sda/queue/read_ahead_kb 128
+        write /sys/block/sda/queue/scheduler cfq
         # SDE
         write /sys/block/sde/queue/iostats 0
-        write /sys/block/sde/queue/read_ahead_kb 512
-        write /sys/block/sde/queue/scheduler fiops
+        write /sys/block/sde/queue/read_ahead_kb 128
+        write /sys/block/sde/queue/scheduler cfq
         # DM-0
         write /sys/block/dm-0/queue/iostats 0
-        write /sys/block/dm-0/queue/read_ahead_kb 512
-        write /sys/block/dm-0/queue/scheduler fiops
+        write /sys/block/dm-0/queue/read_ahead_kb 128
+        write /sys/block/dm-0/queue/scheduler cfq
     #
     # UFS Tweaks
         write /sys/module/scsi_mod/parameters/use_blk_mq Y
@@ -119,7 +119,6 @@ on darkness
         chmod 444 /sys/module/msm_thermal/vdd_restriction/enabled
         write /sys/module/msm_thermal/parameters/enabled N
         write /sys/kernel/fp_boost/enabled 1
-        write /sys/kernel/mm/uksm/run_charging 1
     #
     # Darkness Mods
         setprop net.hostname Darkness
@@ -136,10 +135,7 @@ on darkness
         setprop debug.generate-debug-info false
         setprop sys.use_fifo_ui 1
         setprop ro.sys.sdcardfs true
-        setprop ro.boot.vendor.overlay.theme com.google.android.theme.pixel
-        setprop ro.com.google.ime.theme_id=5
         setprop send_bobs_and_vegena true
 
 on property:dev.bootcomplete=1
     trigger darkness
-    setprop persist.spectrum.profile 0
