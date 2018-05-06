@@ -24,10 +24,42 @@ on property:sys.boot_completed=1
 # Balanced (default profile)
 on property:persist.spectrum.profile=0
     # Set CPU Parameters
+        # Little
+            write /sys/devices/system/cpu/cpu0/online 1
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
+            # SchedUtil
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 250
+            # PwrUtilX
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/down_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/up_rate_limit_us 250
+            # Set Default CPU Governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+        # Big
+            write /sys/devices/system/cpu/cpu2/online 1
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
+            # SchedUtil
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
+            # PwrUtilX
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/down_rate_limit_us 1000
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/up_rate_limit_us 500
+            # Set Default CPU Governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
     #
     # CPU Scheduler
         write /proc/sys/kernel/sched_boost 0
@@ -49,10 +81,42 @@ on property:persist.spectrum.profile=0
 # Performance
 on property:persist.spectrum.profile=1
     # Set CPU Parameters
+        # Little
+            write /sys/devices/system/cpu/cpu0/online 1
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
+            # SchedUtil
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 1500
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 250
+            # PwrUtilX
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/down_rate_limit_us 1500
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/up_rate_limit_us 250
+            # Set Default CPU Governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+        # Big
+            write /sys/devices/system/cpu/cpu2/online 1
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
+            # SchedUtil
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 1500
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 250
+            # PwrUtilX
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/down_rate_limit_us 1500
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/up_rate_limit_us 250
+            # Set Default CPU Governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
     #
     # CPU Scheduler
         write /proc/sys/kernel/sched_boost 1
@@ -74,8 +138,20 @@ on property:persist.spectrum.profile=1
 # Battery
 on property:persist.spectrum.profile=2
     # Set CPU Parameters
+        # Little
+            write /sys/devices/system/cpu/cpu0/online 1
             chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor pwrutilx
+            write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/down_rate_limit_us 1000
+            write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/iowait_boost_enable 0
+            write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/up_rate_limit_us 3000
+        # Big
+            write /sys/devices/system/cpu/cpu2/online 1
             chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor pwrutilx
+            write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/down_rate_limit_us 1000
+            write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/iowait_boost_enable 0
+            write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/up_rate_limit_us 3000
     #
     # CPU Scheduler
         write /proc/sys/kernel/sched_boost 0
@@ -97,10 +173,42 @@ on property:persist.spectrum.profile=2
 # Gaming
 on property:persist.spectrum.profile=3
     # Set CPU Parameters
+        # Little
+            write /sys/devices/system/cpu/cpu0/online 1
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
+            write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
+            # SchedUtil
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 2000
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 100
+            # PwrUtilX
                 chmod 755 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/down_rate_limit_us 2000
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu0/cpufreq/pwrutilx/up_rate_limit_us 100
+            # Set Default CPU Governor
+                write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+        # Big
+            write /sys/devices/system/cpu/cpu2/online 1
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
+            write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
+            # SchedUtil
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 2000
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 250
+            # PwrUtilX
                 chmod 755 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor pwrutilx
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/down_rate_limit_us 2000
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/iowait_boost_enable 0
+                write /sys/devices/system/cpu/cpu2/cpufreq/pwrutilx/up_rate_limit_us 250
+            # Set Default CPU Governor
+                write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor schedutil
     #
     # CPU Scheduler
         write /proc/sys/kernel/sched_boost 1
