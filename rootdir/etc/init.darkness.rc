@@ -105,11 +105,8 @@ on darkness
         write /sys/devices/soc/624000.ufshc/clkscale_enable 1
         write /sys/devices/soc/624000.ufshc/624000.ufshc:ufs_variant/pm_qos_enable 1
     #
-    # KCAL Colour Control
-        write /sys/devices/platform/kcal_ctrl.0/kcal_enable 0
-    #
     # Misc Tweaks
-        write /sys/module/workqueue/parameters/power_efficient N
+        write /sys/module/workqueue/parameters/power_efficient Y
         write /sys/module/sync/parameters/fsync_enabled Y
         write /sys/module/qpnp_smbcharger/parameters/default_hvdcp_icl_ma 1500
         write /sys/module/qpnp_smbcharger/parameters/default_hvdcp3_icl_ma 2700
@@ -135,6 +132,9 @@ on darkness
         setprop debug.generate-debug-info false
         setprop sys.use_fifo_ui 1
         setprop ro.sys.sdcardfs true
+        setprop i_hate_miui true
+        setprop google_is_spying_on_us true
+        setprop fuck_russian_government true
         setprop send_bobs_and_vegena true
 
 on property:dev.bootcomplete=1
